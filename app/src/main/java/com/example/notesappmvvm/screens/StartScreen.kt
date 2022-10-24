@@ -75,7 +75,7 @@ fun StartScreen(navController: NavHostController) {
                             .clip(RoundedCornerShape(percent = 40)),
                         colors = ButtonDefaults.buttonColors(Maroon),
                         onClick = {
-
+                            navController.navigate(NavRoute.Main.route)
                         }
                     ) {
                         Text(
@@ -91,7 +91,7 @@ fun StartScreen(navController: NavHostController) {
                             .clip(RoundedCornerShape(percent = 40)),
                         colors = ButtonDefaults.buttonColors(Maroon),
                         onClick = {
-
+                            navController.navigate(NavRoute.Main.route)
                         }
                     ) {
                         Text(

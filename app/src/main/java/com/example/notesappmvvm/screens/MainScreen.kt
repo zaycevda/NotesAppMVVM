@@ -32,7 +32,7 @@ fun MainScreen(navController: NavHostController) {
             FloatingActionButton(
                 backgroundColor = Maroon,
                 onClick = {
-
+                    navController.navigate(NavRoute.Add.route)
                 }) {
                 Icon(
                     imageVector = Icons.Filled.Add,
@@ -65,7 +65,7 @@ fun NoteItem(
             )
             .clip(RoundedCornerShape(percent = 40))
             .clickable {
-
+                navController.navigate(NavRoute.Note.route)
             },
         elevation = 6.dp
     ) {
