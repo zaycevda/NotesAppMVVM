@@ -1,5 +1,6 @@
 package com.example.notesappmvvm.screens
 
+import android.app.Application
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -13,18 +14,29 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.navigation.NavHostController
+import com.example.notesappmvvm.MainViewModel
+import com.example.notesappmvvm.MainViewModelFactory
 import com.example.notesappmvvm.R
 import com.example.notesappmvvm.navigation.NavRoute
 import com.example.notesappmvvm.ui.theme.Invisible
 import com.example.notesappmvvm.ui.theme.Maroon
 import com.example.notesappmvvm.ui.theme.MistyRose
+import com.example.notesappmvvm.utils.TYPE_DATABASE
+import com.example.notesappmvvm.utils.TYPE_FIREBASE
+import com.example.notesappmvvm.utils.TYPE_ROOM
 
 @Composable
 fun StartScreen(navController: NavHostController) {
+    val context = LocalContext.current
+    val mViewModel: MainViewModel =
+        viewModel(factory = MainViewModelFactory(context.applicationContext as Application))
     Scaffold(
         modifier = Modifier
             .fillMaxSize(),
@@ -75,6 +87,7 @@ fun StartScreen(navController: NavHostController) {
                             .clip(RoundedCornerShape(percent = 40)),
                         colors = ButtonDefaults.buttonColors(Maroon),
                         onClick = {
+                            mViewModel.initDatabase(TYPE_ROOM)
                             navController.navigate(NavRoute.Main.route)
                         }
                     ) {
@@ -91,6 +104,7 @@ fun StartScreen(navController: NavHostController) {
                             .clip(RoundedCornerShape(percent = 40)),
                         colors = ButtonDefaults.buttonColors(Maroon),
                         onClick = {
+                            mViewModel.initDatabase(TYPE_FIREBASE)
                             navController.navigate(NavRoute.Main.route)
                         }
                     ) {

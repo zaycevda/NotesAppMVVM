@@ -75,7 +75,7 @@ fun AddScreen(navController: NavHostController) {
                     .padding(vertical = 10.dp),
                 colors = ButtonDefaults.buttonColors(Maroon),
                 onClick = {
-
+                    navController.navigate(NavRoute.Main.route)
                 }
             ) {
                 Text(
